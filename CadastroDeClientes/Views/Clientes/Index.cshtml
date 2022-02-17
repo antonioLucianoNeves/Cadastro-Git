@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<CadastroDeClientes.Models.ClientesModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Início cadastro</h1>
+
+<p>
+    <a asp-action="CriarCliente">Cadastrar novo cliente</a>
+</p>
+
+<table class="table">
+    <thead>
+        
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    <a asp-action="EditarCliente" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="ExcluirCliente" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
