@@ -19,11 +19,12 @@ namespace CadastroDeClientes.Models
         [MaxLength(100, ErrorMessage = "Nome excedeu o tamanho permitido")]
         public string Nome { get; set; }
 
-        [Display(Name = "CPF")]
+        [Display(Name = "CPF/CNPJ")]
         [Required(ErrorMessage = "O {0} é obrigatorio", AllowEmptyStrings = false)]
-        [MaxLength(11, ErrorMessage = "CPF contém somente 11 digitos")]
+        [MaxLength(14, ErrorMessage = "CPF/CNPJ contém 11 digitos e CNPJ somente 14 digitos")]
+        [Range(00000000000, 99999999999999)]
         public string Cpf { get; set; }
-
+        
         //[MinLength(18), MaxLength(100)]
         [Display(Name = "Data de Nascimento", Description = "A idade deve ser acima de 18.")]
         [DataType(DataType.DateTime, ErrorMessage = "Data invalida")]

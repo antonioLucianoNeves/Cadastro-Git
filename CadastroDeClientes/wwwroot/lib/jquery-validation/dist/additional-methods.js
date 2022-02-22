@@ -266,7 +266,7 @@ $.validator.addMethod( "cpfBR", function( value ) {
 	value = value.replace( /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g, "" );
 
 	// Checking value to have 11 digits only
-	if ( value.length !== 11 ) {
+	if (value.length !== 11) {
 		return false;
 	}
 

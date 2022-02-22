@@ -14,7 +14,7 @@ namespace CadastroDeClientes.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Cpf = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
+                    Cpf = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Tipo = table.Column<int>(type: "int", nullable: false)
                 },
