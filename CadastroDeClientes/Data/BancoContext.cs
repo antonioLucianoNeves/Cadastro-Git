@@ -14,5 +14,10 @@ namespace CadastroDeClientes.Data
         }
 
         public DbSet<ClientesModel> Clientes { get; set; }
+
+        internal Task FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

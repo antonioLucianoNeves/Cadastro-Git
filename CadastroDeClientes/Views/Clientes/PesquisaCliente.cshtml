@@ -1,0 +1,15 @@
+﻿@model CadastroDeClientes.Models.ClientesModel
+@{
+
+    ViewData["Title"] = "PesquisaCliente";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Clientes" asp-action="PesquisaCliente">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Pesquisar" />
+    </p>
+</form>

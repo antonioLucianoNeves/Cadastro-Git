@@ -10,7 +10,52 @@
 <p>
     <a asp-action="CriarCliente">Cadastrar novo cliente</a>
 </p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="bg-success border rounded text-white">
+                <h5>Padrão</h5>
+                <br />
+                <h2 id="countValor" value="padrao">0</h2>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="bg-warning border rounded text-white">
+                <h5>Bloqueado</h5>
+                <br />
+                <h2 id="countValor" value="bloqueado">0</h2>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="bg-danger border rounded text-white">
+                <h5>Cancelado</h5>
+                <br />
+                <h2 id="countValor" value="cancelado">0</h2>
+            </div>
+        </div>
+    </div>
+</div>
 
+<br />
+<p>
+    Filtros para Pesquisa:
+    @using (Html.BeginForm("Index", "Clientes", FormMethod.Get))
+    {
+        <form>
+            <div class="form-group">
+                @Html.TextBox("Pesquisar")
+               
+                    <label for="minDate">Data Inicial</label>
+                    <input type="date" value="dataAn" name="minDate" />
+                    <label for="minDate">Data Final</label>
+                    <input type="date" value="dataAn" name="maxDate" />
+            </div>
+            <input type="submit" placeholder="Nome" value="Pesquisar" />
+        </form>
+    }
+
+
+</p>
 <table class="table">
     <thead>
 
@@ -32,25 +77,25 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataNascimento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipo)
-                </td>
-                <td>
-                    <a asp-action="EditarCliente" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="ExcluirCliente" asp-route-id="@item.Id">Excluir</a>
-                </td>
-            </tr>
-        }
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                <a asp-action="EditarCliente" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="ExcluirCliente" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CadastroDeClientes.Models
 {
     public class ClientesModel
-    {
-        //Data Anotation
+    { 
+        //Data Annotations
         [Key]
         [Required]
         public int Id { get; set; }
@@ -24,8 +26,8 @@ namespace CadastroDeClientes.Models
         [MaxLength(14, ErrorMessage = "CPF/CNPJ contém 11 digitos e CNPJ somente 14 digitos")]
         [Range(00000000000, 99999999999999)]
         public string Cpf { get; set; }
+
         
-        //[MinLength(18), MaxLength(100)]
         [Display(Name = "Data de Nascimento", Description = "A idade deve ser acima de 18.")]
         [DataType(DataType.DateTime, ErrorMessage = "Data invalida")]
         [Required(ErrorMessage = "O {0} é obrigatorio", AllowEmptyStrings = false)]
@@ -33,5 +35,18 @@ namespace CadastroDeClientes.Models
 
         [Display(Name = "Tipo")]
         public int Tipo { get; set; }
+        
+        private int _contador;
+
+        public Task Incremento(int incremento)
+        {
+            _contador += incremento;
+            return Task.CompletedTask;
+        }
+
+        public Task<int> GetContador()
+        {
+            return Task.FromResult(_contador);
+        }
     }
 }
